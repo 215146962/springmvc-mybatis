@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+  
+  	<!-- 这个文件如果不整合springmvc的话就使用，如果整合的话就直接在applicationContext.xml中配置 -->
+    <environments default="sms">
+      <!-- 任何配置文件，的参数都可以在框架代码里面找到！！ -->
+      <!-- 大部分的框架，对配置文件的解释的所在类的分包的包名，configuration以及缩写、builder以及缩写 -->
+      <environment id="sms">
+        <transactionManager type="JDBC"></transactionManager>
+        <dataSource type="POOLED">
+          <!-- property 对应的就是set方法-->
+          <property name="driver" value="com.mysql.jdbc.Driver"/>
+          <property name="url" value="jdbc:mysql://localhost:3306/demo?serverTimezone=UTC"/>
+          <property name="username" value="root"/>
+          <property name="password" value="root"/>
+        </dataSource>
+      </environment>
+    </environments>
+    
+    <mappers>
+	    <!-- <package name="com.example.demo.mapper"/> -->
+	    <mapper resource="mapper/PersonMapper.xml"/>
+	</mappers>
+</configuration>
